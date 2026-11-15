@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "deny": [
+      "Bash(rm:*)",
+      "Bash(rmdir:*)",
+      "Bash(del:*)",
+      "Bash(git push:*)",
+      "Bash(git reset --hard:*)",
+      "Bash(git clean:*)",
+      "PowerShell(Remove-Item:*)",
+      "PowerShell(rm:*)",
+      "PowerShell(del:*)"
+    ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "git -C .setup pull --ff-only -q || true",
+            "timeout": 30
+          }
+        ]
+      }
+    ]
+  }
+}
